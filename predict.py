@@ -1,5 +1,4 @@
 import csv
-import sys
 
 def load_t():
     with open("thetaValue.csv", "r") as f:
