@@ -1,7 +1,9 @@
 from predict import linearRegression, load_t
 from train import db, train
 import numpy as np
-
+import math
+import matplotlib.pyplot as plt
+import csv
 
 train()
 
@@ -14,9 +16,23 @@ for m in test_mileages:
 
 
 
+with open("thetaValue.csv", "w") as f:
+        writer = csv.writer(f)
+        writer.writerow([0, 0]) #reset le file a 0
 #BONUS
 
-import matplotlib.pyplot as plt
+tab_error = []
+
+for mile, price in zip(db["km"], db["price"]):
+    error = linearRegression(mile, t0, t1) - price
+    tab_error.append(error ** 2)
+
+MSE = sum(tab_error) / len(tab_error)
+RMSE = math.sqrt(MSE)
+
+
+print(f"Precision Rate: {RMSE}")
+
 plt.figure()
 plt.scatter(db["km"], db["price"], s=8)
 plt.xlabel("mileage")
