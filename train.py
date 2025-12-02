@@ -5,9 +5,9 @@ from predict import linearRegression
 t0 = 0.0
 t1 = 0.0
 
-# with open("thetaValue.csv", "w") as f:
-#         writer = csv.writer(f)
-#         writer.writerow([0, 0]) #reset le file a 0
+with open("thetaValue.csv", "w") as f:
+        writer = csv.writer(f)
+        writer.writerow([0, 0]) #reset le file a 0
 
 db = pd.read_csv("./data.csv")
 
@@ -46,3 +46,9 @@ def train():
         writer.writerow([real_t0, real_t1])
 
 
+def main():
+    train()
+
+
+if (__name__ == "__main__"):
+    main()
