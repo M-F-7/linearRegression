@@ -7,18 +7,6 @@ import csv
 
 train()
 
-t0, t1 = load_t()
-print("t0: ", t0, "t1: ", t1)
-
-test_mileages = [50000, 25000, 35000]
-for m in test_mileages:
-    print(f"Mileage: {m}, Estimated price: {linearRegression(m, t0, t1)}")
-
-
-
-with open("thetaValue.csv", "w") as f:
-        writer = csv.writer(f)
-        writer.writerow([0, 0]) #reset le file a 0
 #BONUS
 
 tab_error = []
