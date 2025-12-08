@@ -20,11 +20,11 @@ price_std = db["price"].std()
 db["km_norm"] = (db["km"] - km_mean) / km_std                           #x norm = x - x.mean() / x.std
 db["price_norm"] = (db["price"] - price_mean) / price_std
 
-learning_rate = 0.01
-iterations = 15000
+learning_rate = 0.005
+iterations = 50000
 
 def train():
-    global t0, t1
+    global t0, t1, learning_rate, old_cost
 
     for i in range(iterations):
         sum_t0 = 0.0
@@ -37,6 +37,7 @@ def train():
 
         t0 -= learning_rate * (1 / db.shape[0]) * sum_t0
         t1 -= learning_rate * (1 / db.shape[0]) * sum_t1
+                  
 
     real_t1 = t1 * (price_std / km_std)
     real_t0 = price_mean + (t0 * price_std) - real_t1 * km_mean

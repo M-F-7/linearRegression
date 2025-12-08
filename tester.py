@@ -3,7 +3,6 @@ from train import db, train
 import numpy as np
 import math
 import matplotlib.pyplot as plt
-import csv
 
 train()
 
@@ -19,7 +18,7 @@ def main():
     RMSE = math.sqrt(MSE)
 
 
-    print(f"Precision Rate: {RMSE}")
+    print(f"Precision Rate: {RMSE}") #Mean error
 
     plt.figure()
     plt.scatter(db["km"], db["price"], s=8)
